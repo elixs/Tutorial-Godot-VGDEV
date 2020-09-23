@@ -6,10 +6,11 @@ func _ready():
 
 
 func on_body_entered(body: Node):
-	Manager.score += 1
-	hide()
-	$CollisionShape2D.disabled = true
-	$AudioStreamPlayer.play()
+	if body.is_in_group("player"):
+		Manager.score += 1
+		hide()
+		$CollisionShape2D.disabled = true
+		$AudioStreamPlayer.play()
 
 func on_finished():
 	queue_free()
